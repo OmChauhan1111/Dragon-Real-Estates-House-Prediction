@@ -14,9 +14,6 @@ A machine learning project to predict the median value of owner-occupied homes i
 - [Modeling](#modeling)  
 - [Pipeline & Scaling](#pipeline--scaling)  
 - [Evaluation](#evaluation)  
-- [Saving and Loading Model](#saving-and-loading-model)  
-- [Usage](#usage)  
-- [Dependencies](#dependencies)  
 - [Author](#author)  
 
 ---
@@ -93,7 +90,6 @@ The **Boston Housing dataset** contains 506 rows and 14 columns:
 
 ## Pipeline & Scaling
 
-```python
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 from sklearn.impute import SimpleImputer
@@ -104,16 +100,21 @@ pipeline = Pipeline([
 ])
 
 housing_prepared = pipeline.fit_transform(housing)
-Evaluation
-Training Performance
-Metric	Value
-Mean Squared Error (MSE)	1.396
-Root Mean Squared Error (RMSE)	1.181
-R² Score	0.984
+
+## Evaluation
+
+-Training Performance
+-Metric	Value
+-ean Squared Error (MSE)	1.396
+-Root Mean Squared Error (RMSE)	1.181
+-R² Score	0.984
 
 Excellent fit on training data, capturing underlying patterns effectively.
 
-Cross-Validation (10-Fold)
+
+## Cross-Validation (10-Fold)
+
+
 Fold	RMSE
 1	2.740
 2	2.838
@@ -126,7 +127,7 @@ Fold	RMSE
 9	3.435
 10	2.985
 
-Summary:
+## Summary:
 
 Metric	Value
 Mean RMSE	3.343
@@ -134,7 +135,7 @@ Std Deviation	0.766
 
 Consistent performance on unseen folds, showing model robustness.
 
-Test Set Performance
+## Test Set Performance
 Metric	Value
 Mean Squared Error (MSE)	8.630
 Root Mean Squared Error (RMSE)	2.938
@@ -142,7 +143,7 @@ R² Score	0.878
 
 Model generalizes well to new, unseen data.
 
-Sample Predictions
+## Sample Predictions
 Actual (MEDV)	Predicted
 16.5	24.327
 10.2	11.757
@@ -152,7 +153,7 @@ Actual (MEDV)	Predicted
 
 Predictions are very close to actual values, demonstrating high accuracy.
 
-Conclusion
+## Conclusion
 Random Forest Regressor effectively predicts housing prices.
 
 Cross-validation ensures robustness and prevents overfitting.
@@ -168,10 +169,9 @@ from joblib import dump, load
 dump(model, 'Dragon.joblib')
 
 # Load model
+
 model = load('Dragon.joblib')
-Usage
-python
-Copy code
+
 import numpy as np
 from joblib import load
 
@@ -179,29 +179,10 @@ model = load('Dragon.joblib')
 features = np.array([[...]])  # Preprocessed input features
 prediction = model.predict(features)
 print("Predicted Price:", prediction)
-Dependencies
-Python 3.x
 
-scikit-learn
 
-pandas
-
-numpy
-
-matplotlib
-
-seaborn
-
-Author
+## Author
 Om Singh Chauhan
 Email: omchauhanom1111@gmail.com
 BCA Final Year (Data Science)
 
-pgsql
-Copy code
-
-This version is **fully polished**, professional, GitHub-ready, with **all evaluation metrics, pipelines, and usage clearly explained**.  
-
-If you want, I can also make a **shorter, visually attractive README with badges, images, and highlighted key metrics** for better GitHub appeal.  
-
-Do you want me to do that too?
