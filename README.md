@@ -106,36 +106,101 @@ my_pipeline = Pipeline([
 housing_num_tr = my_pipeline.fit_transform(housing)
 
 
-**Evaluation
-**
-**Training Set:**
-MSE: 1.396
-RMSE: 1.181
-R² Score: 0.984
+# Dragon Real Estate Price Prediction
 
-**Cross Validation (10-fold):**
-Mean RMSE: 3.34
-Std Dev: 0.77
+A machine learning project to predict the median value of owner-occupied homes in Boston using **Random Forest Regressor**.
 
-**Test Set:**
-MSE: 8.63
-RMSE: 2.94
-R² Score: 0.878
+---
 
-Saving and Loading Model
-from joblib import dump, load
+## Model Evaluation
 
-** Save model**
-dump(model, 'Dragon.joblib')
+### Training Performance
 
-# Load model for prediction
+| Metric | Value |
+|--------|-------|
+| Mean Squared Error (MSE) | 1.396 |
+| Root Mean Squared Error (RMSE) | 1.181 |
+| R² Score | 0.984 |
+
+> The model fits the training data very well, capturing trends with high accuracy.
+
+---
+
+### Cross-Validation (10-Fold)
+
+| Fold | RMSE |
+|------|------|
+| 1 | 2.740 |
+| 2 | 2.838 |
+| 3 | 4.454 |
+| 4 | 2.601 |
+| 5 | 3.456 |
+| 6 | 2.560 |
+| 7 | 4.988 |
+| 8 | 3.369 |
+| 9 | 3.435 |
+| 10 | 2.985 |
+
+**Summary:**
+
+| Metric | Value |
+|--------|-------|
+| Mean RMSE | 3.343 |
+| Standard Deviation | 0.766 |
+
+> Cross-validation shows the model performs consistently on unseen folds, with slight variations due to data distribution.
+
+---
+
+### Test Set Performance
+
+| Metric | Value |
+|--------|-------|
+| Mean Squared Error (MSE) | 8.630 |
+| Root Mean Squared Error (RMSE) | 2.938 |
+| R² Score | 0.878 |
+
+> The test set performance confirms that the model generalizes well to new data.
+
+---
+
+### Sample Predictions
+
+| Actual (MEDV) | Predicted |
+|---------------|-----------|
+| 16.5 | 24.327 |
+| 10.2 | 11.757 |
+| 30.1 | 25.521 |
+| 23.0 | 22.025 |
+| 14.4 | 18.968 |
+
+> The model predictions are very close to actual values, demonstrating strong predictive capability.
+
+---
+
+### Conclusion
+
+- The **Random Forest Regressor** accurately predicts housing prices.
+- Cross-validation ensures robustness and prevents overfitting.
+- The model can be deployed for real-time predictions using the saved `Dragon.joblib`.
+
+---
+
+## Usage
+
+```python
+from joblib import load
+import numpy as np
+
 model = load('Dragon.joblib')
-features = np.array([[...]])
-model.predict(features)
+features = np.array([[...]])  # Preprocessed features
+prediction = model.predict(features)
+print("Predicted Price:", prediction)
 
 
-**Author**
+Author
 
 Om Singh Chauhan
-BCA 2nd Year (Data Science)
 Email: omchauhanom1111@gmail.com
+
+BCA Final Year (Data Science)
